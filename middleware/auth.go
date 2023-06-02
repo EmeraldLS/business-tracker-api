@@ -13,7 +13,7 @@ func Auth(c *gin.Context) {
 	if err != nil {
 		c.JSON(http.StatusForbidden, gin.H{
 			"response": "token_error",
-			"message":  "No authorization token provided",
+			"message":  "No authorization token provided.",
 		})
 		c.Abort()
 		return
