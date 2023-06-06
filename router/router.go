@@ -43,6 +43,7 @@ func Run() {
 			secured.GET("/sum/:year", controller.GetTotalAnnualSubFeeOfAYear)
 			secured.GET("/sum/month/:month", controller.GetTotalAnnualSubFeeOfAMonth)
 			secured.PUT("/logout", controller.Logout)
+			secured.PUT("/refresh_access_token", controller.RefreshAccessToken)
 		}
 	}
 

@@ -92,3 +92,15 @@ func FindUserByToken(token string) (model.User, error) {
 	}
 	return user, nil
 }
+
+func FindUserByRefreshToken(refresh_token string) (model.User, error) {
+	var user model.User
+	filter := bson.M{"refresh_token": refresh_token}
+	ctx, cancel := context.WithTimeout(context.TODO(), 10*time.Second)
+	err := UserCollection.FindOne(ctx, filter).Decode(&user)
+	defer cancel()
+	if err != nil {
+		return model.User{}, err
+	}
+	return user, nil
+}
